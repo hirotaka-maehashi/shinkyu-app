@@ -7,7 +7,6 @@ import styles from './page.module.css'
 
 export default function DashboardPage() {
   const [userEmail, setUserEmail] = useState<string | null>(null)
-  const router = useRouter()
 
   useEffect(() => {
     const fetchUser = async () => {
