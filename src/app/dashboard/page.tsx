@@ -6,6 +6,8 @@ import styles from './page.module.css'
 import Link from 'next/link'
 import { startOfMonth, endOfMonth, format, subMonths, addDays } from 'date-fns'
 
+export const dynamic = 'force-dynamic'
+
 export default function DashboardPage() {
   const [userEmail, setUserEmail] = useState<string | null>(null)
 
