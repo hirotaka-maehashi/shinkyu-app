@@ -911,7 +911,7 @@ return (
       <Link href="/routes" className={styles.linkButton}>日別ルートページ</Link>
       <Link href="/routes/weekly" className={styles.linkButton}>週間予定表ページ</Link>
       <Link href="/dashboard/patients" className={styles.linkButton}>患者管理ページ</Link>
-      <Link href="/dashboard/staffs" className={styles.linkButton}>スタッフ管理ページ</Link>d
+      <Link href="/dashboard/staffs" className={styles.linkButton}>スタッフ管理ページ</Link>
       <Link href="/routes/map/route" className={styles.linkButton}>担当者別ルートマップ</Link>
       <Link href="/patient-status" className={styles.linkButton}>その他ページへ</Link>
       <Link href="/routes/history" className={styles.historyButton}>売上履歴ページ</Link>
@@ -921,5 +921,3 @@ return (
   </main>
 )
 }
-
-//
