@@ -1,0 +1,140 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  font-family: sans-serif;
+}
+
+.heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* 横並び2カラムの外枠 */
+.flexRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* それぞれのブロック（稼働日数・登録フォーム） */
+.cardCompact {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* テーブル設定（そのままでOK） */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.table tr:hover {
+  background-color: #f1f9ff;
+}
+
+/* 戻るボタン */
+.backButton {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #ddd;
+  color: #333;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #ccc;
+}
+
+/* フォームの共通設定（小さめ） */
+.form,
+.cardCompact form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form input,
+.form select,
+.cardCompact input,
+.cardCompact select {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.form button,
+.cardCompact button {
+  background-color: #0070f3;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.form button:hover,
+.cardCompact button:hover {
+  background-color: #005bbb;
+}
+
+/* 1. ラベルと入力欄を縦に整列（崩れ防止） */
+.cardCompact label,
+.cardCompact input,
+.cardCompact select,
+.cardCompact button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 2. フォーム全体のpaddingとgapを整える */
+.cardCompact form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 3. 各インプットの margin-bottom を少し調整 */
+.cardCompact input,
+.cardCompact select {
+  margin-bottom: 6px;
+}
+
+/* 4. ボタンをやや小さめ＆左寄せ */
+.cardCompact button {
+  width: fit-content;
+  align-self: flex-start;
+  padding: 6px 12px;
+}

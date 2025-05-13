@@ -1,0 +1,224 @@
+.container {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+  }
+  
+  .heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  
+  .input,
+  .select,
+  .textarea {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .button {
+    padding: 10px;
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .button:hover {
+    background-color: #2563eb;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .backButtonWrapper {
+    margin-top: 24px;
+    text-align: center;
+  }
+  
+  .backButton {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #eee;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+  }
+  
+  .backButton:hover {
+    background-color: #ddd;
+  }
+
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .checkboxGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+  }
+  
+  .tableWrapper {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .table {
+    min-width: 1200px; /* 必要に応じて調整 */
+  }
+
+  .buttonGroup {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .deleteButton {
+    background-color: #e74c3c; /* 赤系 */
+    color: white;
+    border: none;
+  }
+  
+  .deleteButton:hover {
+    background-color: #c0392b;
+  }
+  
+  .scheduleGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .scheduleRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .checkboxBox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.2rem;
+  }
+  
+  .dayLabel {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  .timeSelect {
+    font-size: 0.9rem;
+    padding: 4px;
+  }
+  
+  .formGroup {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formLabel {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+  
+  .formSelect {
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  /* 検索バーとフィルタの行 */
+.filterRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* 50音フィルターボタン行 */
+.kanaFilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 1.5rem;
+}
+
+/* 通常のフィルターボタン */
+.kanaButton {
+  padding: 4px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+/* 選択中のボタン */
+.activeButton {
+  background-color: #0070f3;
+  color: white;
+  border-color: #0070f3;
+  font-weight: bold;
+}
+
+/* 追加の整列 */
+.input {
+  margin-right: 0.5rem;
+}
+
+.headingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.statsRow {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}

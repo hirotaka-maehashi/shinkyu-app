@@ -1,0 +1,415 @@
+/* 全体 */
+.container {
+  padding: 2rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #f5f5f7;
+}
+
+/* 見出し */
+.heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* 日付セレクタ */
+.dateSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.dateSelector select {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.95rem;
+}
+
+/* 表全体 */
+.gridWrapper {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-x: auto;
+}
+
+/* ヘッダー行 */
+.gridHeader {
+  display: flex;
+  background-color: #dde6f5;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+.cellHeader {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-right: 1px solid #ccc;
+}
+
+/* 各行 */
+.gridRow {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.cellTime {
+  flex: 1;
+  text-align: center;
+  background: #f0f0f0;
+  padding: 0.5rem;
+  border-right: 1px solid #ccc;
+}
+.cell {
+  flex: 1;
+  padding: 0.5rem;
+  border-right: 1px solid #eee;
+  min-width: 140px;
+  text-align: center;
+}
+
+/* 合計行 */
+.gridFooter {
+  display: flex;
+  font-weight: bold;
+  background: #f9f9f9;
+  border-top: 2px solid #ccc;
+}
+.cellFooter {
+  flex: 1;
+  padding: 0.6rem;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+/* 単価 */
+.unitPrice {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+/* 訪問済・欠席 */
+.statusRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 4px;
+}
+.statusRow label {
+  font-size: 0.85rem;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+/* サマリー */
+/* 集計カード全体 */
+.summary {
+  margin-top: 2rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summaryTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.card label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.card span {
+  font-size: 1rem;
+  color: #111;
+}
+
+/* スタッフ別ミニ合計表示 */
+.staffMiniSummary {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #444;
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 0.4rem;
+  line-height: 1.4;
+}
+
+/* 保存ボタン：青系 */
+.saveButton {
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem 2.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.saveButton:hover {
+  background-color: #0069d9;
+}
+
+.saveButtonWrapper {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.saveButton {
+  background-color: #007bff;
+  color: white;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.saveButton:hover {
+  background-color: #0069d9;
+}
+
+.backButton {
+  background-color: #e2e6ea;
+  color: #333;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #d6d8db;
+}
+
+.visitContent {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+}
+
+.visitRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央に寄せる */
+  gap: 4px;
+  text-align: center;  /* テキストも中央寄せに */
+}
+
+.actionRow {
+  display: flex;
+  justify-content: center; /* 横方向の中央寄せ */
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.patientInfo {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.unitPrice {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.gridWrapper {
+  max-height: 600px; /* 高さを固定 */
+  overflow-y: auto;  /* 中だけスクロール */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.editMode {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  min-width: 180px;
+}
+
+.editMode input,
+.editMode select {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.editMode button {
+  padding: 6px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease;
+}
+
+.editMode button:nth-of-type(1) {
+  background-color: #007bff;
+  color: white;
+}
+
+.editMode button:nth-of-type(2) {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.editMode button:nth-of-type(3) {
+  background-color: #ffdddd;
+  color: #a00;
+}
+
+.editButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.editButtons button {
+  padding: 4px 8px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  transition: background-color 0.2s ease;
+}
+
+.editButtons button:hover {
+  background-color: #e0e0e0;
+}
+
+.editButtons button:nth-of-type(1) {
+  background-color: #007bff;
+  color: white;
+}
+
+.editButtons button:nth-of-type(2) {
+  background-color: #28a745; /* 緑色 */
+  color: white;
+}
+
+.editButtons button:nth-of-type(3) {
+  background-color: #ffdddd;
+  color: #a00;
+}
+
+.editButtons button:nth-of-type(1):hover {
+  background-color: #0056b3; /* 保存ボタン：より濃い青 */
+}
+
+.editButtons button:nth-of-type(2):hover {
+  background-color: #218838; /* キャンセルボタン：濃い緑 */
+}
+
+.editButtons button:nth-of-type(3):hover {
+  background-color: #f5b5b5; /* 削除ボタン：少し濃い赤 */
+}
+
+.emptyCell {
+  text-align: center;
+  cursor: pointer;
+  color: #bbb;
+  padding: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.emptyCell:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.patientInfo {
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.patientInfo:hover {
+  background-color: #eef6ff;
+  text-decoration: underline;
+}
+
+.editMode input,
+.editMode select {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.staffSaveZone {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.staffSaveZone button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.staffSaveZone button:hover {
+  background-color: #0056b3;
+}
+
+.gapLine {
+  font-size: 12px;
+  margin-top: 6px;
+  line-height: 1.4;
+  color: #666;
+}
+
+.gapNegative {
+  color: rgb(191, 31, 31) !important;
+  font-weight: bold;
+}

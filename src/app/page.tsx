@@ -23,19 +23,21 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+  
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: 'http://localhost:3000/dashboard', // 🔁 ここが追加ポイント！
+        emailRedirectTo: process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL,
       },
     })
+  
     if (error) {
       setMessage('エラーが発生しました')
     } else {
       setMessage('ログインリンクをメールで送信しました')
     }
   }
-
+  
   return (
     <main className={styles.main}>
       <h1>鍼灸APP ログイン</h1>

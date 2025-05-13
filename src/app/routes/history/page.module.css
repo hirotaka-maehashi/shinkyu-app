@@ -1,0 +1,85 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+}
+
+.heading {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.subheading {
+  font-size: 1.3rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.filterRow {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filterRow label {
+  font-weight: bold;
+  font-size: 0.95rem;
+  min-width: 70px;
+}
+
+.filterRow select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.table tr:hover {
+  background-color: #f1f9ff;
+}
+.backButton {
+  padding: 0.5rem 1.5rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.backButton:hover {
+  background-color: #005bb5;
+}
