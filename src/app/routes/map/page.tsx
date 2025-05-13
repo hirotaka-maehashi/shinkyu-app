@@ -12,7 +12,7 @@ export default function MapPage() {
       <h1 className={styles.heading}>訪問ルート確認マップ</h1>
 
       <div className={styles.mapWrapper}>
-        <MapView />
+        <MapView selectedStaffId="" selectedDate={new Date()} />
       </div>
 
       <div className={styles.backButtonWrapper}>
