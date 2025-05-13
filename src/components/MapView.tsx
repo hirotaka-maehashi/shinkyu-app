@@ -101,6 +101,7 @@ async function drawRouteForStaff(
 }
 
 export default function MapView({ selectedStaffId, selectedDate }: MapViewProps) {
+  console.log('🧭 MapView 表示開始', selectedStaffId, selectedDate)
   const mapContainer = useRef<HTMLDivElement | null>(null)
   const [map, setMap] = useState<mapboxgl.Map | null>(null)
   const staffColors: string[] = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd']
@@ -121,6 +122,7 @@ export default function MapView({ selectedStaffId, selectedDate }: MapViewProps)
     initMap.addControl(new mapboxgl.FullscreenControl(), 'top-right')
 
     setMap(initMap)
+    console.log('🗺 Mapbox 初期化成功')
 
     return () => initMap.remove()
   }, [])
@@ -130,6 +132,7 @@ export default function MapView({ selectedStaffId, selectedDate }: MapViewProps)
 
     const loadVisitsAndRoute = async () => {
       const baseDate = selectedDate.toISOString().split('T')[0]
+      console.log('📆 クエリ対象日付:', baseDate)
 
       let query = supabase
         .from('weekly_visits')
@@ -164,6 +167,8 @@ export default function MapView({ selectedStaffId, selectedDate }: MapViewProps)
       }
 
       const { data: visits, error } = await query
+      console.log('📡 Supabaseからの取得結果:', visits?.length ?? 0, '件')
+if (error) console.error('❌ Supabase取得エラー:', error)
 
       if (error || !visits || visits.length === 0) {
         console.warn('📭 該当する訪問データがありません')
@@ -188,6 +193,7 @@ export default function MapView({ selectedStaffId, selectedDate }: MapViewProps)
 
       if (selectedStaffId !== 'ALL') {
         const visitsForOne = visitsTyped.filter(v => v.staff_id === selectedStaffId)
+        console.log('📍 単一staffルート描画: ', selectedStaffId, ' 件数:', visitsForOne.length)
         drawRouteForStaff(selectedStaffId, visitsForOne, map, clinicCoordinates, staffColors[0], bounds, markersRef)
       } else {
         const staffIds = Array.from(new Set(visitsTyped.map(v => v.staff_id))).sort()
