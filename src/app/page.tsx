@@ -40,7 +40,7 @@ export default function LoginPage() {
   
   return (
     <main className={styles.main}>
-      <h1>鍼灸APP ログイン</h1>
+      <h1>鍼灸APP　サインイン</h1>
       <form onSubmit={handleLogin}>
         <input
           type="email"
