@@ -8,22 +8,31 @@ export default function AuthCallbackPage() {
   const router = useRouter()
 
   useEffect(() => {
-    const handleAuth = async () => {
-      const { data: { session }, error } = await supabase.auth.getSession()
+    const handleCallback = async () => {
+      const url = new URL(window.location.href)
+      const code = url.searchParams.get('code')
 
-      console.log('セッション情報:', session)
-      console.log('エラー情報:', error) // ← ここ追加
-
-      if (session) {
-        router.push('/dashboard')
-      } else {
-        alert('ログイン認証に失敗しました')
+      if (!code) {
+        alert('認証コードが見つかりませんでした。')
         router.push('/')
+        return
       }
+
+      const { error } = await supabase.auth.exchangeCodeForSession(code)
+
+      if (error) {
+        console.error('認証エラー:', error.message)
+        alert('認証に失敗しました。')
+        router.push('/')
+        return
+      }
+
+      // セッション取得後にダッシュボードへ
+      router.push('/dashboard')
     }
 
-    handleAuth()
-  }, [])
+    handleCallback()
+  }, [router])
 
   return <p>ログイン処理中です...</p>
 }
