@@ -99,10 +99,10 @@ useEffect(() => {
     fetchUser()
   }, [])
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut()
-    location.href = '/'
-  }
+const handleLogout = async () => {
+  await supabase.auth.signOut()
+  location.href = '/auth/login' // または '/auth/signin' に変更可能
+}
 
   useEffect(() => {
     const fetchMonthlyVisitRecords = async () => {
