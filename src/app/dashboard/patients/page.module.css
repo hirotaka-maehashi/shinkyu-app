@@ -96,10 +96,14 @@
     font-size: 0.95rem;
   }
   
-  .tableWrapper {
-    overflow-x: auto;
-    width: 100%;
-  }
+.tableWrapper {
+  overflow-x: auto;       /* 横スクロールOK */
+  overflow-y: auto;       /* 縦スクロールもOK */
+  max-height: 500px;      /* 表の最大高さを制限（必要に応じて調整） */
+  width: 100%;
+  border: 1px solid #ddd; /* optional: 境界を見やすく */
+  -webkit-overflow-scrolling: touch; /* iOSの慣性スクロール対策 */
+}
 
   .table {
     min-width: 1200px; /* 必要に応じて調整 */

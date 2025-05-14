@@ -74,7 +74,7 @@ const [statusStats, setStatusStats] = useState({
   const generateDayList = () => Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, '0'))
 
   const getGroupLabel = (dateStr: string): string => {
-  const date = new Date(dateStr)
+  const date = new Date(dateStr + 'T09:00:00') 
   const y = date.getFullYear()
   const m = String(date.getMonth() + 1).padStart(2, '0')
   const d = String(date.getDate()).padStart(2, '0')
@@ -336,83 +336,89 @@ return (
       )}
     </div>
 
-    {/* 売上テーブル */}
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>対象</th>
-          <th>施術者</th>
-          <th>売上</th>
-          <th>稼働日数</th>
-          <th>予約数</th>
-          <th>施術回数</th>
-          <th>欠席数</th>
-          <th>カルテ枚数</th>
-          <th>平均単価</th>
-          <th>平均回数</th>
-        </tr>
-      </thead>
-     <tbody>
-  {salesData.length === 0 ? (
-    <tr>
-      <td colSpan={10}>データがありません</td>
-    </tr>
-  ) : (
-    salesData.map((r, i) => (
-      <tr key={i}>
-        <td>{r.label || ''}</td>
-        <td>{r.staff_name}</td>
-        <td>¥{r.total_sales.toLocaleString()}</td>
-        <td>{r.working_days}</td>
-        <td>{r.total_reservations}</td>
-        <td>{r.completed_visits}</td>
-        <td>{r.absent_count}（{Math.round(r.absent_rate * 100)}%）</td>
-        <td>{r.patient_count ?? '-'}</td>
-        <td>¥{Math.round(r.avg_unit_price).toLocaleString()}</td>
-        <td>
-          {r.avg_visits_per_patient > 0
-            ? `${r.avg_visits_per_patient.toFixed(1)}回`
-            : '-'}
-        </td>
+{/* 売上テーブルをスクロール可能にラップ */}
+<div className={styles.tableWrapper}>
+  <table className={styles.table}>
+    <thead>
+      <tr>
+        <th>対象</th>
+        <th>施術者</th>
+        <th>売上</th>
+        <th>稼働日数</th>
+        <th>予約数</th>
+        <th>施術回数</th>
+        <th>欠席数</th>
+        <th>カルテ枚数</th>
+        <th>平均単価</th>
+        <th>平均回数</th>
       </tr>
-    ))
-  )}
-</tbody>
-
-    </table>
+    </thead>
+    <tbody>
+      {salesData.length === 0 ? (
+        <tr>
+          <td colSpan={10}>データがありません</td>
+        </tr>
+      ) : (
+        salesData.map((r, i) => (
+          <tr key={i}>
+            <td>{r.label || ''}</td>
+            <td>{r.staff_name}</td>
+            <td>¥{r.total_sales.toLocaleString()}</td>
+            <td>{r.working_days}</td>
+            <td>{r.total_reservations}</td>
+            <td>{r.completed_visits}</td>
+            <td>{r.absent_count}（{Math.round(r.absent_rate * 100)}%）</td>
+            <td>{r.patient_count ?? '-'}</td>
+            <td>¥{Math.round(r.avg_unit_price).toLocaleString()}</td>
+            <td>
+              {r.avg_visits_per_patient > 0
+                ? `${r.avg_visits_per_patient.toFixed(1)}回`
+                : '-'}
+            </td>
+          </tr>
+        ))
+      )}
+    </tbody>
+  </table>
+</div>
 
 <h2 className={styles.subheading}>患者推移</h2>
-<table className={styles.table}>
-  <thead>
-    <tr>
-      <th>対象</th>
-      <th>新規</th>
-      <th>再開</th>
-      <th>休止</th>
-      <th>中止</th>
-      <th>合計</th>
-      <th>体験</th>
-      <th>成約（率）</th>
-      <th>不成約</th>
-    </tr>
-  </thead>
-  <tbody>
-    {statusStatsList.map((row, index) => (
-      <tr key={index}>
-        <td>{row.label}</td>
-        <td>{row.new}</td>
-        <td>{row.reopen}</td>
-        <td>{row.pause}</td>
-        <td>{row.cancel}</td>
-        <td>{row.total}</td>
-        <td>{row.trial}</td>
-        <td>{row.contract}（{row.contractRate}%）</td>
-        <td>{row.nonContract}</td>
+<div className={styles.tableWrapper}>
+  <table className={styles.table}>
+    <thead>
+      <tr>
+        <th>対象</th>
+        <th>新規</th>
+        <th>再開</th>
+        <th>休止</th>
+        <th>中止</th>
+        <th>合計</th>
+        <th>体験</th>
+        <th>成約（率）</th>
+        <th>不成約</th>
       </tr>
-    ))}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {statusStatsList.map((row, index) => (
+        <tr key={index}>
+          <td>{row.label}</td>
+          <td>{row.new}</td>
+          <td>{row.reopen}</td>
+          <td>{row.pause}</td>
+          <td>{row.cancel}</td>
+          <td>{row.total}</td>
+          <td>{row.trial}</td>
+          <td>{row.contract}（{row.contractRate}%）</td>
+          <td>{row.nonContract}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
 <div style={{ marginTop: '2rem' }}>
+
+
   <button
     onClick={() => window.location.href = '/dashboard'}  // ダッシュボードURLに合わせて修正
     className={styles.backButton}  // 任意：ボタン用のCSSクラス（↓スタイルも追加します）

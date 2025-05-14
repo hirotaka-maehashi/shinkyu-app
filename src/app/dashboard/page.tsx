@@ -8,6 +8,13 @@ import { startOfMonth, endOfMonth, format, subMonths, addDays } from 'date-fns'
 
 export const dynamic = 'force-dynamic'
 
+// ✅ ⬇️ ここが「ユーティリティ関数」を入れるベストな位置
+const getJstTodayString = () => {
+  const now = new Date()
+  const jst = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+  return jst.toISOString().split('T')[0]
+}
+
 export default function DashboardPage() {
   const [userEmail, setUserEmail] = useState<string | null>(null)
 
@@ -106,9 +113,11 @@ const handleLogout = async () => {
 
   useEffect(() => {
     const fetchMonthlyVisitRecords = async () => {
-      const today = new Date()
-      const from = format(startOfMonth(today), 'yyyy-MM-dd')
-      const to = format(endOfMonth(today), 'yyyy-MM-dd')
+    const now = new Date()
+    const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+
+    const from = format(startOfMonth(jstNow), 'yyyy-MM-dd')
+    const to = format(endOfMonth(jstNow), 'yyyy-MM-dd')
 
       const { data: records, error } = await supabase
         .from('visit_records')
@@ -152,7 +161,7 @@ const handleLogout = async () => {
   }, [])
 
   const fetchTodayStats = async () => {
-  const today = format(new Date(), 'yyyy-MM-dd')
+  const today = getJstTodayString()
   const { data: records } = await supabase
     .from('visit_records')
     .select('*')
@@ -282,7 +291,7 @@ useEffect(() => {
   }
 
 const fetchTodayPlanStats = async () => {
-  const todayStr = format(new Date(), 'yyyy-MM-dd')
+  const todayStr = getJstTodayString()
 
   const { data, error } = await supabase
     .from('weekly_visits')
@@ -325,9 +334,12 @@ const totalSales = data.reduce(
 
 useEffect(() => {
   const fetchMonthlySonotaStats = async () => {
-    const today = new Date()
-    const from = format(startOfMonth(today), 'yyyy-MM-dd')
-    const to = format(endOfMonth(today), 'yyyy-MM-dd')
+  const now = new Date()
+  const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+
+  const from = format(startOfMonth(jstNow), 'yyyy-MM-dd')
+  const to = format(endOfMonth(jstNow), 'yyyy-MM-dd')
+
 
     const { data: sonotaData } = await supabase
       .from('sonota')
@@ -361,8 +373,11 @@ useEffect(() => {
 
 useEffect(() => {
   const fetchExpectedWorkdays = async () => {
-    const today = new Date()
-    const ym = format(today, 'yyyy-MM') // '2025-05'
+  const now = new Date()
+  const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+
+  const ym = format(jstNow, 'yyyy-MM')
+
 
     const { data } = await supabase
       .from('monthly_workdays')
@@ -383,15 +398,18 @@ useEffect(() => {
 
 useEffect(() => {
   const fetchLastMonthSales = async () => {
-    const today = new Date()
-    const start = format(startOfMonth(subMonths(today, 1)), 'yyyy-MM-dd')
-    const end = format(endOfMonth(subMonths(today, 1)), 'yyyy-MM-dd')
+  const now = new Date()
+  const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+
+  const lastMonthStart = format(startOfMonth(subMonths(jstNow, 1)), 'yyyy-MM-dd')
+  const lastMonthEnd = format(endOfMonth(subMonths(jstNow, 1)), 'yyyy-MM-dd')
 
     const { data: records } = await supabase
       .from('visit_records')
       .select('revenue_total')
-      .gte('date', start)
-      .lte('date', end)
+      .gte('date', lastMonthStart)
+      .lte('date', lastMonthEnd)
+
 
     if (records) {
       const total = records.reduce((sum, r) => sum + (r.revenue_total || 0), 0)
@@ -406,9 +424,12 @@ useEffect(() => {
 
 useEffect(() => {
   const fetchPatientStats = async () => {
-    const today = new Date()
-    const from = format(startOfMonth(today), 'yyyy-MM-dd')
-    const to = format(endOfMonth(today), 'yyyy-MM-dd')
+  const now = new Date()
+  const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+
+  const from = format(startOfMonth(jstNow), 'yyyy-MM-dd')
+  const to = format(endOfMonth(jstNow), 'yyyy-MM-dd')
+
 
     // ① 今月のログ取得
     const { data: logs } = await supabase
@@ -466,7 +487,7 @@ useEffect(() => {
 
 useEffect(() => {
   const fetchTodayStaffStats = async () => {
-    const todayStr = format(new Date(), 'yyyy-MM-dd')
+    const todayStr = getJstTodayString()
 
     const { data: records, error } = await supabase
       .from('visit_records')
@@ -525,9 +546,12 @@ useEffect(() => {
 }, [allStaffs])
 
 const fetchMonthlyStaffStats = async () => {
-  const today = new Date()
-  const from = format(startOfMonth(today), 'yyyy-MM-dd')
-  const to = format(endOfMonth(today), 'yyyy-MM-dd')
+const now = new Date()
+const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+
+const from = format(startOfMonth(jstNow), 'yyyy-MM-dd')
+const to = format(endOfMonth(jstNow), 'yyyy-MM-dd')
+
 
   const { data: records, error } = await supabase
     .from('visit_records')
@@ -586,7 +610,7 @@ useEffect(() => {
 }, [allStaffs])
 
 const fetchStaffPlanStats = async () => {
-  const todayStr = format(new Date(), 'yyyy-MM-dd')
+  const todayStr = getJstTodayString()
 
   const { data, error } = await supabase
     .from('weekly_visits')
@@ -650,9 +674,12 @@ const [nearingPatients, setNearingPatients] = useState<any[]>([])
 
 useEffect(() => {
   const fetchNearingPatients = async () => {
-    const today = new Date()
-    const todayStr = format(today, 'yyyy-MM-dd')
-    const nextMonthStr = format(addDays(today, 60), 'yyyy-MM-dd')
+  const now = new Date()
+  const jstNow = new Date(now.getTime() + 9 * 60 * 60 * 1000)
+
+  const todayStr = format(jstNow, 'yyyy-MM-dd')
+  const nextMonthStr = format(addDays(jstNow, 60), 'yyyy-MM-dd')
+
 
     const { data, error } = await supabase
       .from('patients')

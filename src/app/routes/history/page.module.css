@@ -41,14 +41,6 @@
   background-color: #fff;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
-}
-
 .table th,
 .table td {
   border: 1px solid #ddd;
@@ -83,3 +75,23 @@
 .backButton:hover {
   background-color: #005bb5;
 }
+
+.tableWrapper {
+  overflow-x: auto;
+  overflow-y: visible;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;       /* Firefox用 */
+  scroll-behavior: smooth;     /* 任意 */
+}
+
+.table {
+  width: 100%;
+  min-width: 720px; /* ← スマホ対応用 */
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+
