@@ -9,25 +9,22 @@ export default function AuthCallbackPage() {
 
   useEffect(() => {
     const handleCallback = async () => {
-      const url = new URL(window.location.href)
-      const code = url.searchParams.get('code')
+      console.log('✅ メールリンクから遷移')
 
-      if (!code) {
-        alert('認証コードが見つかりませんでした。')
-        router.push('/')
+      // ✅ セッションが生成されているか確認
+      await new Promise(resolve => setTimeout(resolve, 1000)) // ラグ入れ
+
+      const { data: { session }, error } = await supabase.auth.getSession()
+      console.log('セッション:', session)
+      console.log('エラー:', error)
+
+      if (!session) {
+        alert('セッションの取得に失敗しました。ログインページに戻ります。')
+        router.push('/auth/login')
         return
       }
 
-      const { error } = await supabase.auth.exchangeCodeForSession(code)
-
-      if (error) {
-        console.error('認証エラー:', error.message)
-        alert('認証に失敗しました。')
-        router.push('/')
-        return
-      }
-
-      // セッション取得後にダッシュボードへ
+      // 成功時
       router.push('/dashboard')
     }
 

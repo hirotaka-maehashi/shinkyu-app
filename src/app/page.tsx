@@ -33,7 +33,7 @@ export default function SignUpPage() {
       setMessage('✅ 登録成功！確認メールを確認してください')
       setMessageType('success')
       setTimeout(() => {
-        router.push('/auth/signin') // 認証後にサインインページへ
+        router.push('/auth/login') // 認証後にサインインページへ
       }, 1500)
     }
   }
